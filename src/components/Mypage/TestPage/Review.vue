@@ -181,7 +181,6 @@
       </div>
     </div>
     <div v-show="!EndOfExamination" class="Examinationed">
-      <img src="../images/汽车.png" alt="" />
       <div class="title">
         <ul>
           <li @click="gobacked">
@@ -191,17 +190,16 @@
           <li></li>
         </ul>
       </div>
-      <div class="detai">
-        <ul>
-          <li>马路杀手</li>
-          <li>本次考试：{{ trueNum }}分</li>
-          <li>
-            用时：{{ TotalMinute }}分:{{
-              TotalSecondy > 10 ? TotalSecondy : "0" + TotalSecondy
-            }}秒
-          </li>
-          <li @click="reTest">重新考试</li>
-        </ul>
+      <img
+        src="//img.58cdn.com.cn/dist/jxedt/h5/m_new/img/mnks-result.png"
+        style="width: 65%; display: block; margin: 1rem auto"
+        alt=""
+      />
+      <div class="score">
+        <span class="score-num">{{trueNum?trueNum:'0'}}</span> <span class="fen">分</span>
+      </div>
+      <div class="time">
+        <span class="waste-text">用时</span> <span class="waste-time">{{TotalMinute}}分:{{TotalSecondy>10?TotalSecondy:'0'+TotalSecondy}}秒</span>
       </div>
     </div>
   </div>
@@ -641,7 +639,11 @@ export default {
           .then(() => {
             console.log("结束考试");
             this.EndOfExamination = false;
-            this.record.push(this.trueNum);
+            this.record.push({
+              record:this.trueNum,
+              TimeMinute:this.TotalMinute,
+              TimeSecondy:this.TotalSecondy
+            });
             localStorage.setItem("考试记录", JSON.stringify(this.record));
           })
           .catch(() => {
@@ -964,43 +966,42 @@ export default {
 .Examinationed {
   position: relative;
   height: 18rem;
-  img {
-    position: absolute;
-    height: 100%;
-    z-index: -1;
-  }
   .title {
     color: black;
     width: 100%;
     height: 1rem;
     font-size: 0.5rem;
+    padding-top: .5rem;
   }
-  .detai {
-    width: 100%;
-    z-index: 999;
-    ul {
-      width: 80%;
-      margin: 0 auto;
-      li {
-        margin-bottom: 0.3rem;
-      }
-      li:nth-child(1) {
-        font-size: 0.7rem;
-        color: black;
-      }
-      li:last-child {
-        float: left;
-        width: 2rem;
-        background: #24c27d;
-        color: #fff;
-        font-size: 13px;
-        line-height: 30px;
-        text-align: center;
-        box-shadow: 0 2px 4px 0 rgba(36, 194, 125, 0.2);
-        border-radius: 0.5px;
-        margin-right: 0.1rem;
-        border-radius: 15%;
-      }
+  .score {
+    padding-left: 0.5rem;
+    .score-num {
+      font-size: 120px;
+      font-weight: 700;
+      color: #4a4a4a;
+      line-height: 140px;
+    }
+    .fen {
+      font-size: 16px;
+      font-family: PingFangSC;
+      font-weight: 400;
+      color: #4a4a4a;
+      line-height: 22px;
+    }
+  }
+  .time {
+    padding-left: 1rem;
+    .waste-text {
+      font-size: 16px;
+      font-family: PingFangSC;
+      color: #4a4a4a;
+      line-height: 22px;
+    }
+    .waste-time {
+      font-size: 18px;
+      font-family: PingFangSC;
+      color: #feb354;
+      line-height: 25px;
     }
   }
 }

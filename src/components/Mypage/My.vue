@@ -14,6 +14,7 @@
       <div class="option">
         <ul>
           <li>科一</li>
+      
           <li>科四</li>
         </ul>
       </div>
@@ -61,7 +62,9 @@
 </template>
 <script>
 export default {
-  created() {},
+  created() {
+ 
+  },
   mounted() {
     this.deliver();
   },

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import home from '../components/Mypage/Home.vue' 
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -40,6 +39,17 @@ const routes = [
   {
     path:'/Random',
     component:()=> import("../components/Mypage/TestPage/Random.vue")
+  },{
+    path:'/Mytest',
+    component:()=> import("../components/Instrument/MyTest")
+  },
+  {
+    path:'/TwoSubjectsVideo',
+    component:()=> import("../components/Instrument/TwoSubjectsVideo.vue")
+  },
+  {
+    path:'/ThreeSubjectsVideo',
+    component:()=> import("../components/Instrument/ThreeSubjectsVideo.vue")
   }
 ]
 

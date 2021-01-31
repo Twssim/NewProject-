@@ -73,6 +73,27 @@ var routes = [{
       return _interopRequireWildcard(require("../components/Mypage/TestPage/Random.vue"));
     });
   }
+}, {
+  path: '/Mytest',
+  component: function component() {
+    return Promise.resolve().then(function () {
+      return _interopRequireWildcard(require("../components/Instrument/MyTest"));
+    });
+  }
+}, {
+  path: '/TwoSubjectsVideo',
+  component: function component() {
+    return Promise.resolve().then(function () {
+      return _interopRequireWildcard(require("../components/Instrument/TwoSubjectsVideo.vue"));
+    });
+  }
+}, {
+  path: '/ThreeSubjectsVideo',
+  component: function component() {
+    return Promise.resolve().then(function () {
+      return _interopRequireWildcard(require("../components/Instrument/ThreeSubjectsVideo.vue"));
+    });
+  }
 }];
 var router = new _vueRouter["default"]({
   routes: routes
